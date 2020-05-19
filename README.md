@@ -6,4 +6,4 @@ The YOPyRa-NG code for this project was created by Carlos González Morcillo (Ca
 
 I'm extending the functionality of YOPyRa-NG to be able to generate simple animations.
 
-For more information about the YOPyRa-NG code, consult the [a relative link](./YOPyRaNG/README.md) inside its folder.
+For more information about the YOPyRa-NG code, consult the [readme](./YOPyRaNG/README.md) inside its folder.
