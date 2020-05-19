@@ -1,0 +1,70 @@
+[
+	{
+		"type": 	"camera",
+		"origin": [0,1,2],
+		"to": 		[0.2,1.2,-1],
+		"up": 		[0,1,0],
+		"fov":		42
+	},
+
+	{
+		"type": "texture", "subtype":"checker",
+		"id":	"chess",
+		"size": 6,
+	 	"color1": [128,128,128],
+		"color2": [20,20,20]
+	},
+
+	{
+		"type": "material", "subtype":"metal",
+		"id":	"red",
+		"albedo": [255, 64, 64],
+	 	"fuzzy": 0.05
+	},
+
+	{
+		"type": "material", "subtype":"metal",
+		"id":	"gray",
+		"albedo": [128, 128, 128],
+	 	"fuzzy": 0.001
+	},
+
+	{
+		"type": "material", "subtype":"lambertian",
+		"id":	"ground",
+		"albedo": [128, 128, 128],
+		"texture": "chess"
+	},
+
+	{
+		"type": "material", "subtype":"glass",
+		"id":	"glass",
+	 	"ior": 1.9
+	},
+
+
+	{
+    "type": 		"sphere",
+    "material":	"red",
+    "radius": 	1,
+    "position": [2.5, 1, -4]
+  },
+	{
+    "type": 		"sphere",
+    "material":	"glass",
+    "radius": 	0.8,
+    "position": [-1.5, 0.8, -3]
+  },
+	{
+    "type": 		"sphere",
+    "material": "gray",
+    "radius": 	2,
+    "position": [0, 2, -7]
+  },
+	{
+    "type": 		"sphere",
+    "material": "ground",
+    "radius": 	999,
+    "position": [0, -999, 0]
+  }
+]
