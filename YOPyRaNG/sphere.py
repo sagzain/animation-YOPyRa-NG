@@ -2,10 +2,11 @@ from math import sqrt
 import auxfunct as YA
 
 class sphere:
-    def __init__(self, position, radius, material):
+    def __init__(self, position, radius, material, animation):
         self.position = position
         self.radius = radius
         self.material = material
+        self.animation = animation
 
     def hit_update_n (self, t, r):
         p_hit = r.at(t)

@@ -7,6 +7,7 @@ from ray import *
 from camera import *
 from material import *
 from texture import *
+from animation import *
 
 def get_nearest_point(r,p,n,d,nearestobj,obj, obj_p, obj_n):
     drp = (r.origin - obj_p).module()
@@ -34,7 +35,7 @@ class world:
 
 
     def loadscene (self, file):
-        with open('scene.json', 'r') as f:
+        with open(file, 'r') as f:
             data = json.load(f)
 
         for e in data:
@@ -54,7 +55,12 @@ class world:
                 if (material == None):
                     print ("\n\nERROR [Material \"%s\" not found]:  Please, check material id and define it *before* objects in .json file" % (idmaterial))
                     quit()
-                obj = sphere(p, r, material)
+                if("animation" in e):
+                    anim = animation(e['animation']['translate'],e['animation']['rotate'], e['animation']['scale'])
+                else:
+                    anim = None
+
+                obj = sphere(p, r, material, anim)
                 self.objects.append(obj)
 
             if (e['type'] == "material"):

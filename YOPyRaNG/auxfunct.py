@@ -16,6 +16,9 @@ IMAGE_CANVAS = Image.new('RGB', (WIDTH, HEIGHT), color = 'gray')
 INFINITE = 9999999999.9
 EPSILON = 0.00000001
 
+#Number of frames that are going to be generated for the animation.
+FRAMES = 0
+
 def ffmin(a,b):
     result = a if a <= b else b; return (result)
 
@@ -40,6 +43,10 @@ def loadconfig(cfgfile):
         UPDATE_TIME = float(config.get('GUI', 'update_time'))
         PROGRESS_BAR_LENGTH = int(config.get('GUI', 'progress_bar_length'))
         IMAGE_CANVAS = Image.new('RGB', (WIDTH, HEIGHT), color = 'gray')
+
+        #Here we set the number of frames by getting it from the config file
+        FRAMES = int(config.get('ANIMATION','frames'))
+
 
 def printProgressBar (iteration, total):
     percent = ("{0:.2f}").format(100 * (iteration / float(total)))

@@ -1,0 +1,49 @@
+[
+	{
+		"type": 	"camera",
+		"origin": [0,1,2],
+		"to": 		[0.2,1.2,-1],
+		"up": 		[0,1,0],
+		"fov":		42
+	},
+
+	{
+		"type": "texture", "subtype":"checker",
+		"id":	"chess",
+		"size": 6,
+	 	"color1": [128,128,128],
+		"color2": [20,20,20]
+	},
+
+	{
+		"type": "material", "subtype":"metal",
+		"id":	"red",
+		"albedo": [255, 64, 64],
+	 	"fuzzy": 0.05
+    },
+    
+	{
+		"type": "material", "subtype":"lambertian",
+		"id":	"ground",
+		"albedo": [128, 128, 128],
+		"texture": "chess"
+	},
+	{
+    "type": 		"sphere",
+    "material":	"red",
+    "radius": 	1,
+    "position": [2.5, 1, -4],
+    "animation": {
+                    "translate":[3,3,3],
+                    "rotate": 100,
+                    "scale": 2
+                  }
+    },
+
+	{
+    "type": 		"sphere",
+    "material": "ground",
+    "radius": 	999,
+    "position": [0, -999, 0]
+    }
+]
