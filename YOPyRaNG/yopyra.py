@@ -62,7 +62,9 @@ for f in range(YA.FRAMES):
             image[x,YA.HEIGHT-y-1] = c.write_color(YA.SAMPLING)
             YA.printProgressBar(f+1, y*YA.WIDTH+x, YA.WIDTH * YA.HEIGHT)
             if ((time.time() - loop_time) > YA.UPDATE_TIME):
-                loop_time = time.time(); YA.saveImage()
+                loop_time = time.time(); YA.saveImage(f)
 
-YA.saveImage(); #YA.showImage()
+#YA.saveImage(); #YA.showImage()
+
+YA.save_animation()
 print("\nTotal time: %.2f seconds \n" % (time.time() - start_time))

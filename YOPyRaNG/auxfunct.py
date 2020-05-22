@@ -1,6 +1,7 @@
 import sys
 import time
 import configparser
+import glob
 from PIL import Image
 
 OUTPUT = "out.jpg"
@@ -61,8 +62,11 @@ def printProgressBar (frame, iteration, total):
 def getImagePixels ():
     return IMAGE_CANVAS.load()
 
-def saveImage ():
-    IMAGE_CANVAS.save(OUTPUT, quality=QUALITY)
+def saveImage (frame):
+    if(len(str(frame)) == 1): number = '00'+str(frame)
+    if(len(str(frame)) == 2): number = '0'+str(frame)
+    if(len(str(frame)) == 3): number = str(frame)
+    IMAGE_CANVAS.save('./output/img/'+OUTPUT.split('.')[0]+number+'.'+OUTPUT.split('.')[1], quality=QUALITY)
 
 def showImage ():
     IMAGE_CANVAS.show()
@@ -91,3 +95,12 @@ def showHelp(arg0):
     print ("definition and the name of the resulting image .jpg in")
     print ("any order. Important: keep file extension in lowercase.")
     print ("Example: >> python %s config.ini scene.json out.jpg" % arg0)
+
+def save_animation():
+    print("Generating video...")
+
+    inp = "./output/img/*.jpg"
+    outp = "./output/gif/out.gif"
+
+    img, *imgs = [Image.open(f) for f in sorted(glob.glob(inp))]
+    img.save(fp=outp, format='GIF', append_images=imgs, save_all=True, duration=FRAMES, loop=0)
