@@ -50,6 +50,7 @@ world.print_scene_info()
 
 loop_time = time.time()
 for f in range(YA.FRAMES):
+    world.update_world()
     for y in range(YA.HEIGHT):
         for x in range(YA.WIDTH):
             c = color((0,0,0))

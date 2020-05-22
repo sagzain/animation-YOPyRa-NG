@@ -67,7 +67,6 @@ class world:
                     anim = None
 
                 obj = sphere(p, r, material, anim)
-
                 self.objects.append(obj)
 
             if (e['type'] == "material"):
@@ -97,6 +96,15 @@ class world:
                     size = e['size']
                     texture = checker(idtexture, col1, col2, size)
                 self.textures.append(texture)
+        
+        #Here we check if there is an object with animation so we use
+        #the frame number in the config file, otherwise its value will be 1
+        found = 0
+        for o in self.objects:
+            if(o.animation != None):
+                found = 1
+
+        if(found == 0): YA.FRAMES = 1
 
     def hit(self, r):
         p = None; n = None; d = YA.INFINITE; nearestobj = None;
@@ -111,3 +119,9 @@ class world:
 
     def print_scene_info(self):
         print (">> Scene Info: Objects [%d] - Materials [%d] - Textures[%d]" % (len(self.objects), len(self.materials), len(self.textures)))
+
+    def update_world(self):
+        if YA.FRAMES > 1:
+            for o in self.objects:
+                if o.animation != None:
+                    o.animation.calculate_t()

@@ -47,6 +47,7 @@ def loadconfig(cfgfile):
 
         #Here we set the number of frames by getting it from the config file
         FRAMES = int(config.get('ANIMATION','frames'))
+        if FRAMES == 0: FRAMES = 1 
 
 
 def printProgressBar (frame, iteration, total):

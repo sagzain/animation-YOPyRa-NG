@@ -1,3 +1,5 @@
+import auxfunct as YA
+
 class animation:
     def __init__(self, translate=None, rotate=None, scale=None):
         self.translate = translate
@@ -5,5 +7,5 @@ class animation:
         self.scale = scale
 
 
-    def calculate_segments_t(init, end):
-        return true
+    def calculate_t(self):
+        print(YA.FRAMES)
