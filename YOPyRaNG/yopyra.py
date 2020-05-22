@@ -50,7 +50,7 @@ world.print_scene_info()
 
 loop_time = time.time()
 for f in range(YA.FRAMES):
-    world.update_world()
+    world.update_world(f)
     for y in range(YA.HEIGHT):
         for x in range(YA.WIDTH):
             c = color((0,0,0))
@@ -60,7 +60,7 @@ for f in range(YA.FRAMES):
                 u = (x + xr) / YA.WIDTH; v = (y + yr) / YA.HEIGHT
                 c += raytracing(world, world.camera.get_ray(u,v), YA.DEPTH)
             image[x,YA.HEIGHT-y-1] = c.write_color(YA.SAMPLING)
-            YA.printProgressBar(f, y*YA.WIDTH+x, YA.WIDTH * YA.HEIGHT)
+            YA.printProgressBar(f+1, y*YA.WIDTH+x, YA.WIDTH * YA.HEIGHT)
             if ((time.time() - loop_time) > YA.UPDATE_TIME):
                 loop_time = time.time(); YA.saveImage()
 

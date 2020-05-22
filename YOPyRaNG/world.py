@@ -120,8 +120,8 @@ class world:
     def print_scene_info(self):
         print (">> Scene Info: Objects [%d] - Materials [%d] - Textures[%d]" % (len(self.objects), len(self.materials), len(self.textures)))
 
-    def update_world(self):
-        if YA.FRAMES > 1:
+    def update_world(self, frame):
+        if frame > 0:
             for o in self.objects:
                 if o.animation != None:
-                    o.animation.calculate_t()
+                    o.position = vector(*tuple(o.animation.translate))
