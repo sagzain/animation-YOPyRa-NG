@@ -58,7 +58,7 @@ class world:
                 if("animation" in e):
                     anim = animation()
                     if('translate' in e['animation']):
-                        anim.translate = e['animation']['translate']
+                        anim.translate = vector(*tuple(e['animation']['translate']))
                     if('rotate' in e['animation']):
                         anim.rotate = e['animation']['rotate']
                     if('scale' in e['animation']):
@@ -107,7 +107,7 @@ class world:
         if(found == 0): YA.FRAMES = 1
 
     def hit(self, r):
-        p = None; n = None; d = YA.INFINITE; nearestobj = None;
+        p = None; n = None; d = YA.INFINITE; nearestobj = None
         for obj in self.objects:
             obj_hitted, obj_p, obj_n = obj.hit(r)
             if (obj_hitted):
@@ -124,4 +124,4 @@ class world:
         if frame > 0:
             for o in self.objects:
                 if o.animation != None:
-                    o.position = vector(*tuple(o.animation.translate))
+                    o.position = o.animation.calculate_t(o.position)
