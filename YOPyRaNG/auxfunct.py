@@ -29,6 +29,7 @@ def loadconfig(cfgfile):
     global OUTPUT, QUALITY, WIDTH, HEIGHT, SAMPLING, DEPTH
     global UPDATE_TIME, PROGRESS_BAR_LENGTH
     global IMAGE_CANVAS
+    global FRAMES
 
     if (cfgfile != ""):
         config = configparser.ConfigParser()
@@ -48,12 +49,12 @@ def loadconfig(cfgfile):
         FRAMES = int(config.get('ANIMATION','frames'))
 
 
-def printProgressBar (iteration, total):
+def printProgressBar (frame, iteration, total):
     percent = ("{0:.2f}").format(100 * (iteration / float(total)))
     filledLength = int(PROGRESS_BAR_LENGTH * iteration // total)
     bar = '#' * filledLength + '-' * (PROGRESS_BAR_LENGTH - filledLength)
 
-    sys.stdout.write("\rRendering [%s] %s%%" % (bar, percent))
+    sys.stdout.write("\rRendering frame %d/%d [%s] %s%%" % (frame, FRAMES, bar, percent))
     sys.stdout.flush()
 
 def getImagePixels ():
@@ -72,6 +73,7 @@ def printRenderInfo():
     print ("Image Size: %dx%d" % (WIDTH, HEIGHT))
     print ("Sampling: %d" % SAMPLING)
     print ("Tracing depth: %d" % DEPTH)
+    print ("Frames: %d" % FRAMES)
     print ("=======================================================")
 
 def showArgInfo(config, scene, output):

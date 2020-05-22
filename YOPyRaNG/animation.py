@@ -3,4 +3,7 @@ class animation:
         self.translate = translate
         self.rotate = rotate 
         self.scale = scale
-    
+
+
+    def calculate_segments_t(init, end):
+        return true

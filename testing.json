@@ -34,7 +34,7 @@
     "radius": 	1,
     "position": [2.5, 1, -4],
     "animation": {
-                    "translate":[3,3,3],
+                    "translate":[0, 2, -7],
                     "rotate": 100,
                     "scale": 2
                   }

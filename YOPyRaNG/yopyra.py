@@ -49,18 +49,19 @@ world = world(argscene)
 world.print_scene_info()
 
 loop_time = time.time()
-for y in range(YA.HEIGHT):
-    for x in range(YA.WIDTH):
-        c = color((0,0,0))
-        for s in range(YA.SAMPLING):
-            if (YA.SAMPLING == 1): xr = 0.0; yr = 0.0
-            else: xr = random(); yr = random()
-            u = (x + xr) / YA.WIDTH; v = (y + yr) / YA.HEIGHT
-            c += raytracing(world, world.camera.get_ray(u,v), YA.DEPTH)
-        image[x,YA.HEIGHT-y-1] = c.write_color(YA.SAMPLING)
-        YA.printProgressBar(y*YA.WIDTH+x, YA.WIDTH * YA.HEIGHT)
-        if ((time.time() - loop_time) > YA.UPDATE_TIME):
-            loop_time = time.time(); YA.saveImage()
+for f in range(YA.FRAMES):
+    for y in range(YA.HEIGHT):
+        for x in range(YA.WIDTH):
+            c = color((0,0,0))
+            for s in range(YA.SAMPLING):
+                if (YA.SAMPLING == 1): xr = 0.0; yr = 0.0
+                else: xr = random(); yr = random()
+                u = (x + xr) / YA.WIDTH; v = (y + yr) / YA.HEIGHT
+                c += raytracing(world, world.camera.get_ray(u,v), YA.DEPTH)
+            image[x,YA.HEIGHT-y-1] = c.write_color(YA.SAMPLING)
+            YA.printProgressBar(f, y*YA.WIDTH+x, YA.WIDTH * YA.HEIGHT)
+            if ((time.time() - loop_time) > YA.UPDATE_TIME):
+                loop_time = time.time(); YA.saveImage()
 
 YA.saveImage(); #YA.showImage()
 print("\nTotal time: %.2f seconds \n" % (time.time() - start_time))

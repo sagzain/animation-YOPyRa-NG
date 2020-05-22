@@ -56,11 +56,18 @@ class world:
                     print ("\n\nERROR [Material \"%s\" not found]:  Please, check material id and define it *before* objects in .json file" % (idmaterial))
                     quit()
                 if("animation" in e):
-                    anim = animation(e['animation']['translate'],e['animation']['rotate'], e['animation']['scale'])
+                    anim = animation()
+                    if('translate' in e['animation']):
+                        anim.translate = e['animation']['translate']
+                    if('rotate' in e['animation']):
+                        anim.rotate = e['animation']['rotate']
+                    if('scale' in e['animation']):
+                        anim.scale = e['animation']['scale']
                 else:
                     anim = None
 
                 obj = sphere(p, r, material, anim)
+
                 self.objects.append(obj)
 
             if (e['type'] == "material"):
