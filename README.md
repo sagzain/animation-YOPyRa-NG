@@ -23,7 +23,7 @@ progress_bar_length = 36
 ```
 
 Now the program is going to repeat the same process of generating an image for each frame we have indicated on the config file.
-Each time a frame is generated, the position of the objects (if they have animation) is changed for the next image.
+Each time a frame is generated, the position of the objects (if they have animation) changes for the next image.
 
 ```python
 for f in range(YA.FRAMES):
@@ -51,7 +51,7 @@ This is the example of the structure you have to use, you can check it the rest 
     "radius": 	1,
     "position": [2.5, 1, -4],
     "animation": {
-                    "translate":[0, 2, -7],
+                    "translate":[0, 2, -7]
                 }
 },
 ```
