@@ -53,13 +53,19 @@
     "type": 		"sphere",
     "material":	"glass",
     "radius": 	0.8,
-    "position": [-1.5, 0.8, -3]
+	"position": [-1.5, 0.8, -3],
+    "animation": {
+					"translate":[0, 0.8, -7]
+				 }
   },
 	{
     "type": 		"sphere",
     "material": "gray",
     "radius": 	2,
-    "position": [0, 2, -7]
+    "position": [0, 2, -7],
+    "animation": {
+					"translate":[0, 2, -14]
+				 }
   },
 	{
     "type": 		"sphere",

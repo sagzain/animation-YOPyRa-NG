@@ -59,10 +59,6 @@ class world:
                     anim = animation()
                     if('translate' in e['animation']):
                         anim.translate = vector(*tuple(e['animation']['translate']))
-                    if('rotate' in e['animation']):
-                        anim.rotate = e['animation']['rotate']
-                    if('scale' in e['animation']):
-                        anim.scale = e['animation']['scale']
                 else:
                     anim = None
 
@@ -118,7 +114,7 @@ class world:
         return color((int((r.direction.y+1)*128), 255, 255))
 
     def print_scene_info(self):
-        print (">> Scene Info: Objects [%d] - Materials [%d] - Textures[%d]" % (len(self.objects), len(self.materials), len(self.textures)))
+        print ("\n>> Scene Info: Objects [%d] - Materials [%d] - Textures[%d]" % (len(self.objects), len(self.materials), len(self.textures)))
 
     def update_world(self, frame):
         if frame > 0:

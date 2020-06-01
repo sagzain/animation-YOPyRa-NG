@@ -1,12 +1,10 @@
 import auxfunct as YA
 from vector import *
+import math
 
 class animation:
-    def __init__(self, translate=None, rotate=None, scale=None):
+    def __init__(self, translate=None):
         self.translate = translate
-        self.rotate = rotate 
-        self.scale = scale
-
 
     def calculate_t(self,position):
         frames = YA.FRAMES - 1 

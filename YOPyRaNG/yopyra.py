@@ -44,6 +44,7 @@ YA.loadconfig(argconfig)
 if (argoutput != ""): YA.OUTPUT = argoutput;
 
 YA.printRenderInfo()
+YA.clear_directory()
 image = YA.getImagePixels()
 world = world(argscene)
 world.print_scene_info()
@@ -66,5 +67,5 @@ for f in range(YA.FRAMES):
 
 #YA.saveImage(); #YA.showImage()
 
-YA.save_animation()
+if(YA.FRAMES > 1): YA.save_animation()
 print("\nTotal time: %.2f seconds \n" % (time.time() - start_time))

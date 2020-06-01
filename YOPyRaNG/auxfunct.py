@@ -2,6 +2,7 @@ import sys
 import time
 import configparser
 import glob
+import os
 from PIL import Image
 
 OUTPUT = "out.jpg"
@@ -97,10 +98,24 @@ def showHelp(arg0):
     print ("Example: >> python %s config.ini scene.json out.jpg" % arg0)
 
 def save_animation():
-    print("Generating video...")
+    print("\nGenerating video...")
 
     inp = "./output/img/*.jpg"
     outp = "./output/gif/out.gif"
 
     img, *imgs = [Image.open(f) for f in sorted(glob.glob(inp))]
     img.save(fp=outp, format='GIF', append_images=imgs, save_all=True, duration=FRAMES, loop=0)
+
+def clear_directory():
+    files = glob.glob('./output/img/*')
+    iteration = 0
+    for f in files:
+        iteration += 1
+        filledLength = int(3 * iteration // len(files))
+        bar = '.' * filledLength + '-' * (3 - filledLength)
+
+        sys.stdout.write("\rClearing img directory%s" % (bar))
+        sys.stdout.flush()
+
+        os.remove(f)
+        
