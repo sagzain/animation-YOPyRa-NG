@@ -4,6 +4,7 @@ import configparser
 import glob
 import os
 from PIL import Image
+import cv2
 
 OUTPUT = "out.jpg"
 QUALITY = 95
@@ -105,6 +106,22 @@ def save_animation():
 
     img, *imgs = [Image.open(f) for f in sorted(glob.glob(inp))]
     img.save(fp=outp, format='GIF', append_images=imgs, save_all=True, duration=FRAMES, loop=0)
+
+def create_video():
+    outp = "./output/video/out.mp4"
+
+    img_array = []
+    for file in glob.glob('./output/img/*.jpg'):
+        img = cv2.imread(file)
+        height, width, layers = img.shape
+        size = (width, height)
+        img_array.append(img)
+
+    video = cv2.VideoWriter(outp, cv2.VideoWriter_fourcc(*"mp4v"), 60, size)
+    
+    for i in range(len(img_array)):
+        video.write(img_array[i])
+    video.release()
 
 def clear_directory():
     files = glob.glob('./output/img/*')

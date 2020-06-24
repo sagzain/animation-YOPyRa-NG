@@ -65,7 +65,7 @@ for f in range(YA.FRAMES):
             if ((time.time() - loop_time) > YA.UPDATE_TIME):
                 loop_time = time.time(); YA.saveImage(f)
 
-#YA.saveImage(); #YA.showImage()
-
-if(YA.FRAMES > 1): YA.save_animation()
+if(YA.FRAMES > 1): 
+    YA.save_animation()
+    YA.create_video()
 print("\nTotal time: %.2f seconds \n" % (time.time() - start_time))
