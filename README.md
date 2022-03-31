@@ -73,7 +73,11 @@ def calculate_t(self,position):
 
 For example if we indicate that we want 20 frames, the algorithm will calculate the distance from the origin to the final position and then divide into 20 segments that will correspond with the new position for the object on each frame to create the final movement.
 
+So we are going to generate a frame for every segment and join them together in order to genere a MP3 file and a GIF file with the resulting animation.
 
+<p align="center">
+  <img src="/output/gif/out.gif" width=520/>
+</p>
 
 ## How to execute it
 
